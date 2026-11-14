@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Campo: Cazadores de Sesgos (IA)</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #131a2b;
+      --accent: #00f0ff;
+      --purple: #8b5cf6;
+      --green: #10b981;
+      --danger: #f43f5e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 15px;
+    }
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      border: 2px solid var(--accent);
+      background: linear-gradient(135deg, #131a2b 0%, #1e1b4b 100%);
+      padding: 22px 18px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+    }
+    h1 { color: var(--accent); margin: 0 0 10px 0; font-size: 1.55rem; letter-spacing: 0.5px; }
+    .mission-brief {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--purple);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      margin-top: 12px;
+      text-align: left;
+    }
+    .step-card {
+      background: var(--card);
+      border-left: 5px solid var(--purple);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #243049;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .step-title { font-size: 1.15rem; font-weight: bold; color: var(--accent); margin: 0; }
+    .btn-tool {
+      display: inline-block;
+      background: var(--accent);
+      color: #050811;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      margin: 8px 0 12px 0;
+      font-size: 0.9rem;
+    }
+    /* Etiquetas de conceptos técnicos */
+    .tag-ai { background: #2563eb; color: #fff; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+    .tag-warn { background: #e11d48; color: #fff; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+    .tag-data { background: #7c3aed; color: #fff; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+    .tag-ok { background: #059669; color: #fff; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+
+    .terminal-box {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 10px 0;
+      color: #cbd5e1;
+    }
+    .check-area {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px dashed #243049;
+      color: var(--green);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--green); cursor: pointer; }
+    ol { padding-left: 20px; }
+    li { margin-bottom: 10px; }
+
+    /* Desplegable de laboratorio de dataset */
+    details.lab-dropdown {
+      background: #0e1424;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 12px;
+    }
+    details.lab-dropdown summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 1rem;
+      outline: none;
+    }
+    .dataset-item {
+      background: #070a12;
+      border-left: 3px solid var(--purple);
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 0.88rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>🧠 RED TEAM IA: Cazadores de Sesgos</h1>
+    <p style="margin:0; color:var(--muted);">Auditoría de Aprendizaje Supervisado, Visión Artificial y Ética Algorítmica desde el móvil.</p>
+    <div class="mission-brief">
+      <b>📁 EXPEDIENTE DE MISIÓN:</b> Una corporación quiere lanzar una IA global para moderar contenido y reconocer usuarios. El problema es que sus datos de entrenamiento están contaminados y el modelo está empezando a alucinar y discriminar. Como parte del equipo de auditoría, deberás entrenar, sabotear y depurar modelos reales en tu navegador.
+    </div>
+  </header>
+
+  <!-- FASE 1 -->
+  <div class="step-card">
+    <div class="step-header">
+      <h2 class="step-title">FASE 1: Visión Artificial en Vivo (20 min)</h2>
+    </div>
+    <p>Vas a entrenar una <b>Red Neuronal Convolucional</b> directamente en la memoria de tu móvil usando la cámara para clasificar gestos en tiempo real.</p>
+    <a class="btn-tool" href="https://teachablemachine.withgoogle.com/train/image" target="_blank">1. ABRIR TEACHABLE MACHINE (IMAGEN) ↗</a>
+    <ol>
+      <li>Si te pide permiso para usar la <b>cámara del móvil</b>, dale a <b>Permitir</b>. (Puedes alternar entre cámara frontal y trasera pulsando el icono de girar cámara).</li>
+      <li><b>Creando el Dataset Supervisado:</b>
+        <ul>
+          <li>En <b>Class 1</b>, cámbiale el nombre a <code>Gesto OK</code>. Mantén pulsado el botón <b>Webcam / Mantener para grabar</b> haciendo el signo de OK con tu mano hasta capturar unas <b>50 imágenes</b>.</li>
+          <li>En <b>Class 2</b>, cámbiale el nombre a <code>Puño</code>. Captura otras <b>50 imágenes</b> con el puño cerrado.</li>
+          <li>Pulsa abajo en <b>+ Add a class</b>, llámala <code>Fondo Vacío</code> y captura <b>50 imágenes</b> apuntando a la mesa o la pared (sin tu mano).</li>
+        </ul>
+      </li>
+      <li>Pulsa el botón azul <span class="tag-ai">Train Model (Entrenar modelo)</span> y espera unos segundos sin cambiar de pestaña hasta que compile.</li>
+      <li><b>Test de Validación:</b> Pon tu mano frente a la cámara en el panel <i>Preview</i> y observa las barras de probabilidad en directo.</li>
+      <li><b>🔥 RETO RED TEAM (Data Poisoning / Contaminación):</b> Vuelve a <code>Class 1 (Gesto OK)</code> y añade 25 fotos borrosas, tapando la lente con el dedo o haciendo el gesto de <i>Puño</i> dentro de la carpeta de <i>OK</i>. Pulsa <b>Train Model</b> otra vez y comprueba cómo se desploma la confianza del modelo.</li>
+    </ol>
+    <div class="check-area">
+      <input type="checkbox"> <span>¡Fase 1 completada! Has entrenado y saboteado un modelo de visión artificial.</span>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="step-card">
+    <div class="step-header">
+      <h2 class="step-title">FASE 2: Auditoría de Sesgos en el Dataset (20 min)</h2>
+    </div>
+    <p>Una IA no tiene ideología propia: es un espejo estadístico de los datos con los que la alimentan. Analiza este caso real de <b>Sesgo Algorítmico</b> antes de pasar a la siguiente herramienta.</p>
+    <div class="terminal-box">
+      <b>[SIMULACIÓN DE FILTRO DE MODERACIÓN]</b><br>
+      Un equipo entrenó un bot para detectar comentarios "Tóxicos" usando 10.000 mensajes de internet. Al ponerlo en marcha, el bot bloquea automáticamente frases totalmente inocentes como:<br>
+      <i>"Soy una persona con discapacidad y busco trabajo"</i> &rarr; <span class="tag-warn">TÓXICO (94%)</span><br>
+      <i>"Me encanta la cultura de mi país de origen"</i> &rarr; <span class="tag-warn">TÓXICO (89%)</span>
+    </div>
+    <ol>
+      <li><b>Diagnóstico técnico:</b> ¿Por qué crees que la red neuronal asignó un peso negativo a palabras como <i>"discapacidad"</i> o nombres de países si en esas frases no hay ningún insulto?</li>
+      <li>Abre el desplegable de abajo y realiza la <b>limpieza del dataset</b> mentalmente o con tu compañero de equipo para identificar qué muestras contaminan el entrenamiento:</li>
+    </ol>
+
+    <details class="lab-dropdown">
+      <summary>🔍 Abrir Dataset Contaminado (5 Muestras de Auditoría)</summary>
+      <div class="dataset-item">
+        <b>Muestra #01:</b> Etiquetada como <code>[POSITIVO]</code> &rarr; <i>"Eres un genio programando, qué crack."</i> (Dato limpio)
+      </div>
+      <div class="dataset-item">
+        <b>Muestra #02:</b> Etiquetada como <code>[TÓXICO]</code> &rarr; <i>"No tienes ni idea, vete a tu casa."</i> (Dato limpio)
+      </div>
+      <div class="dataset-item">
+        <b>Muestra #03:</b> Etiquetada como <code>[TÓXICO]</code> &rarr; <i>"Mi vecino es de [País X] y hoy ha comprado pan."</i> <span class="tag-warn">¡SESGO DETECTADO!</span> (Etiquetado erróneo por prejuicio humano; enseña a la IA a asociar ese gentilicio con toxicidad).
+      </div>
+      <div class="dataset-item">
+        <b>Muestra #04:</b> Etiquetada como <code>[POSITIVO]</code> &rarr; <i>"Claro, porque tú siempre lo haces todo súper bien..."</i> <span class="tag-data">¡SARCASMO!</span> (Falso positivo: la IA lee palabras positivas y no detecta la ironía).
+      </div>
+      <div class="dataset-item">
+        <b>Muestra #05:</b> Etiquetada como <code>[TÓXICO]</code> &rarr; <i>"El código tiene un bug crítico y mata el proceso."</i> <span class="tag-data">¡CONTEXTO TÉCNICO!</span> (La palabra "mata" activa el filtro por falta de contexto informático).
+      </div>
+    </details>
+
+    <div class="check-area">
+      <input type="checkbox"> <span>¡Fase 2 completada! Has identificado los sesgos de etiquetado y falsos positivos.</span>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="step-card">
+    <div class="step-header">
+      <h2 class="step-title">FASE 3: Redes Convolucionales y Trazos Vectoriales (20 min)</h2>
+    </div>
+    <p>Vamos a poner a prueba una red neuronal entrenada con más de <b>50 millones de dibujos</b> de usuarios de todo el mundo para ver cómo reconoce patrones espaciales en tiempo real.</p>
+    <a class="btn-tool" href="https://quickdraw.withgoogle.com" target="_blank">2. ABRIR GOOGLE QUICK, DRAW! ↗</a>
+    <ol>
+      <li>Pulsa en <b>¡Jugar!</b> Tienes <b>20 segundos</b> por ronda para dibujar con el dedo en la pantalla el concepto que te pida la IA (6 rondas en total).</li>
+      <li><b>Observa el proceso interno:</b> No esperes a terminar el dibujo. Escucha qué va diciendo la IA cada décima de segundo conforme añades vectores (líneas y curvas).</li>
+      <li><b>Ingeniería Inversa al terminar las 6 rondas:</b> En la pantalla final de resultados, <b>pulsa encima de uno de tus dibujos</b> (especialmente uno que la IA haya fallado o le haya costado adivinar).</li>
+      <li>Analiza las 3 cosas que te muestra Google por dentro:
+        <ul>
+          <li>¿Qué otros objetos pensó la IA que estabas dibujando y en qué orden?</li>
+          <li>Desplaza hacia abajo para ver los <b>miles de dibujos de otros humanos</b> que usó la red neuronal para aprender ese concepto.</li>
+        </ul>
+      </li>
+      <li><b>🔥 RETO DE EVASIÓN (Adversarial Attack):</b> Juega una segunda partida e intenta dibujar el objeto pedido <b>engañando a la IA</b> (dibújalo girado 90 grados, desde una perspectiva rara o con trazos mínimos) para comprobar dónde se rompe su capacidad de generalización.</li>
+    </ol>
+    <div class="check-area">
+      <input type="checkbox"> <span>¡Fase 3 completada! Has analizado las capas de predicción y vectores de patrones.</span>
+    </div>
+  </div>
+
+  <!-- FASE 4: DEBATE -->
+  <div class="step-card" style="border-left-color: var(--danger);">
+    <div class="step-header">
+      <h2 class="step-title" style="color: var(--danger);">⚖️ FASE 4: El Problema de la "Caja Negra" (Debate Final)</h2>
+    </div>
+    <p>Prepara tu postura con tu equipo para los últimos 10 minutos de puesta en común sobre estos 3 dilemas reales de ingeniería de IA:</p>
+    <ol>
+      <li><b>Sesgo de Representación:</b> Si entrenamos una IA de diagnóstico médico usando el 90% de historiales clínicos de hombres adultos de países occidentales, ¿qué ocurrirá cuando se use en un hospital pediátrico o en otro continente?</li>
+      <li><b>El Problema de la Caja Negra (<i>Black Box</i>):</b> En las redes neuronales profundas, los ingenieros saben cómo programan el algoritmo de aprendizaje, pero <b>no pueden leer paso a paso por qué la IA tomó una decisión concreta</b> entre millones de parámetros ocultos. ¿Es ético usar una IA para conceder hipotecas o dictar sentencias si no puede explicar su razonamiento?</li>
+      <li><b>Propiedad Intelectual:</b> Si un modelo generativo crea código o arte tras entrenarse con el trabajo de millones de desarrolladores y artistas sin permiso, ¿a quién pertenece el resultado?</li>
+    </ol>
+    <div class="check-area">
+      <input type="checkbox"> <span>¡Auditoría Finalizada! Listo para el debate con el grupo.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
